@@ -1,0 +1,156 @@
+.results {
+  margin-top: 2rem;
+}
+
+.results-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #374151;
+  margin: 0 0 1rem;
+}
+
+.results-title em {
+  color: #16a34a;
+  font-style: normal;
+}
+
+.results-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.results-col {
+  border: 1.5px solid #e5e7eb;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: border-color .15s;
+}
+
+.results-col--best {
+  border-color: #16a34a;
+  box-shadow: 0 0 0 2px #dcfce7;
+}
+
+.results-store-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: .6rem .9rem;
+  background: #f9fafb;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.results-col--best .results-store-header {
+  background: #f0fdf4;
+  border-bottom-color: #bbf7d0;
+}
+
+.results-store-name {
+  font-weight: 600;
+  font-size: .85rem;
+  color: #374151;
+}
+
+.results-best-badge {
+  background: #16a34a;
+  color: #fff;
+  font-size: .65rem;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 99px;
+  letter-spacing: .5px;
+}
+
+.results-card {
+  padding: .9rem;
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+
+.results-card--empty {
+  color: #9ca3af;
+  font-size: .9rem;
+  min-height: 80px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.results-product-img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  align-self: center;
+}
+
+.results-item-name {
+  font-size: .9rem;
+  font-weight: 500;
+  color: #111827;
+  margin: 0;
+  line-height: 1.3;
+}
+
+.results-unit {
+  font-size: .78rem;
+  color: #9ca3af;
+  margin: 0;
+}
+
+.results-prices {
+  display: flex;
+  align-items: baseline;
+  gap: .4rem;
+  flex-wrap: wrap;
+}
+
+.results-price {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #111827;
+}
+
+.results-price--best {
+  color: #16a34a;
+}
+
+.results-price-original {
+  font-size: .85rem;
+  color: #9ca3af;
+  text-decoration: line-through;
+}
+
+.results-promo-label {
+  font-size: .65rem;
+  font-weight: 700;
+  background: #fef9c3;
+  color: #92400e;
+  padding: 1px 5px;
+  border-radius: 4px;
+}
+
+.results-add-btn {
+  margin-top: .25rem;
+  padding: .45rem .9rem;
+  background: #16a34a;
+  color: #fff;
+  font-size: .82rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  align-self: flex-start;
+  transition: background .15s;
+}
+
+.results-add-btn:hover {
+  background: #15803d;
+}
+
+@media (max-width: 480px) {
+  .results-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,86 @@
+.deals-page {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.deals-heading {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #111827;
+  margin: 0 0 .4rem;
+}
+
+.deals-sub {
+  color: #6b7280;
+  font-size: .9rem;
+  margin: 0 0 1.5rem;
+}
+
+.deals-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 1rem;
+}
+
+.deals-card {
+  border: 1.5px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 1rem;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: .75rem;
+  transition: box-shadow .15s;
+}
+
+.deals-card:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,.08);
+}
+
+.deals-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.deals-item-name {
+  font-size: .88rem;
+  font-weight: 600;
+  color: #111827;
+  margin: 0;
+  line-height: 1.3;
+}
+
+.deals-unit {
+  font-size: .75rem;
+  color: #9ca3af;
+  margin: 0;
+}
+
+.deals-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.deals-price {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #16a34a;
+}
+
+.deals-add-btn {
+  padding: .3rem .65rem;
+  background: #16a34a;
+  color: #fff;
+  font-size: .75rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background .15s;
+}
+
+.deals-add-btn:hover { background: #15803d; }
