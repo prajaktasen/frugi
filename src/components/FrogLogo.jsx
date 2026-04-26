@@ -9,20 +9,18 @@ export default function FrogLogo({ size = 40, className = '' }) {
       aria-hidden="true"
     >
       {/* Eye bumps */}
-      <circle cx="32" cy="22" r="12" />
-      <circle cx="68" cy="22" r="12" />
-      {/* Head */}
-      <ellipse cx="50" cy="37" rx="26" ry="16" />
+      <circle cx="33" cy="26" r="14" />
+      <circle cx="67" cy="26" r="14" />
+      {/* Head — round circle bridging the eyes */}
+      <circle cx="50" cy="42" r="23" />
       {/* Body */}
-      <ellipse cx="50" cy="63" rx="28" ry="22" />
-      {/* Left front leg */}
-      <path d="M22,49 C10,44 3,53 5,61 C7,67 16,67 22,61 Z" />
-      {/* Right front leg */}
-      <path d="M78,49 C90,44 97,53 95,61 C93,67 84,67 78,61 Z" />
-      {/* Left back leg */}
-      <path d="M22,73 C7,73 -1,83 3,91 C7,97 18,95 25,87 C28,82 26,77 22,73 Z" />
-      {/* Right back leg */}
-      <path d="M78,73 C93,73 101,83 97,91 C93,97 82,95 75,87 C72,82 74,77 78,73 Z" />
+      <ellipse cx="50" cy="68" rx="22" ry="19" />
+      {/* Front arms */}
+      <ellipse cx="22" cy="60" rx="12" ry="7" transform="rotate(-15 22 60)" />
+      <ellipse cx="78" cy="60" rx="12" ry="7" transform="rotate(15 78 60)" />
+      {/* Back feet */}
+      <ellipse cx="30" cy="84" rx="17" ry="8" transform="rotate(-20 30 84)" />
+      <ellipse cx="70" cy="84" rx="17" ry="8" transform="rotate(20 70 84)" />
     </svg>
   )
 }

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useApp } from '../AppContext'
 import { searchRecipes, getRecommendations } from '../services/spoonacular'
+import { getPricesForList } from '../api/prices'
 import traderJoes from '../data/traderjoes.json'
 
 function findTJPrice(name) {
@@ -144,7 +145,7 @@ function RecipeCard({ recipe, expanded, onToggle, addedNames, onAddIngredient })
 }
 
 export default function MealsScreen() {
-  const { addToList, setActiveTab } = useApp()
+  const { addToList, list, setPriceResults, setActiveTab } = useApp()
   const [query, setQuery] = useState('')
   const [recs, setRecs] = useState([])
   const [loadingRecs, setLoadingRecs] = useState(true)
@@ -152,6 +153,7 @@ export default function MealsScreen() {
   const [searching, setSearching] = useState(false)
   const [expandedId, setExpandedId] = useState(null)
   const [addedNames, setAddedNames] = useState(new Set())
+  const [findingPrices, setFindingPrices] = useState(false)
 
   useEffect(() => {
     getRecommendations()
@@ -163,6 +165,20 @@ export default function MealsScreen() {
   function handleIngredientAdd(name) {
     addToList(name)
     setAddedNames(prev => new Set([...prev, name.toLowerCase()]))
+  }
+
+  async function handleFindPrices() {
+    if (!list.length) return
+    setFindingPrices(true)
+    try {
+      const results = await getPricesForList(list)
+      setPriceResults(results)
+      setActiveTab('map')
+    } catch (e) {
+      console.error(e)
+    } finally {
+      setFindingPrices(false)
+    }
   }
 
   async function handleSearch(e) {
@@ -240,18 +256,21 @@ export default function MealsScreen() {
       {addedNames.size > 0 && (
         <div style={{ padding: '8px 18px', background: 'var(--green-light)', borderBottom: '1px solid var(--green-mid)' }}>
           <button
-            onClick={() => setActiveTab('list')}
+            onClick={handleFindPrices}
+            disabled={findingPrices}
             style={{
               width: '100%', padding: '10px 14px', borderRadius: 8,
               background: 'var(--green)', color: '#fff', border: 'none',
               fontFamily: "'DM Sans', sans-serif", fontWeight: 600, fontSize: 13,
-              cursor: 'pointer', display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+              cursor: findingPrices ? 'not-allowed' : 'pointer',
+              opacity: findingPrices ? 0.7 : 1,
+              display: 'flex', justifyContent: 'space-between', alignItems: 'center',
             }}
           >
             <span>
-              {addedNames.size} ingredient{addedNames.size !== 1 ? 's' : ''} added to your list
+              {addedNames.size} ingredient{addedNames.size !== 1 ? 's' : ''} added to list
             </span>
-            <span>Find prices →</span>
+            <span>{findingPrices ? 'Finding prices…' : 'Find prices →'}</span>
           </button>
         </div>
       )}
