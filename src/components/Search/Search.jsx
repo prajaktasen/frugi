@@ -35,6 +35,7 @@ export default function Search({ onAddToCart }) {
       const products = await searchProducts(term, store.locationId)
       krogerResult = products[0] ?? null
     } catch (err) {
+      console.warn('[Kroger]', err)
       storeName = 'Kroger (unavailable)'
     }
 
