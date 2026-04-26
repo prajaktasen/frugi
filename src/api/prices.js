@@ -43,6 +43,7 @@ export async function getPricesForList(items) {
 export function calculateTripOptions(priceResults) {
   const STORES = ["Trader Joe's", 'Kroger/QFC', 'Fred Meyer', 'Walmart']
 
+  // Single-store totals
   const singleStore = STORES.map(store => {
     const stops = priceResults.map(({ item, prices }) => {
       const p = prices.find(p => p.store === store)
@@ -52,45 +53,76 @@ export function calculateTripOptions(priceResults) {
     return { store, total, stops }
   }).sort((a, b) => a.total - b.total)
 
-  const optimizedStops = priceResults.map(({ item, prices }) => {
-    const available = prices.filter(p => p.price != null).sort((a, b) => a.price - b.price)
-    const best = available[0]
-    return { item, store: best?.store ?? '—', price: best?.price ?? null }
-  })
-  const optimizedTotal = parseFloat(
-    optimizedStops.reduce((s, x) => s + (x.price ?? 0), 0).toFixed(2)
-  )
-  const savings = parseFloat((singleStore[0].total - optimizedTotal).toFixed(2))
+  const cheapestSingle = singleStore[0].total
+
+  // Find the best 2-store combination (exhaustive search over all pairs)
+  let bestPair = null
+  for (let i = 0; i < STORES.length; i++) {
+    for (let j = i + 1; j < STORES.length; j++) {
+      const [storeA, storeB] = [STORES[i], STORES[j]]
+      const stops = priceResults.map(({ item, prices }) => {
+        const pA = prices.find(p => p.store === storeA)?.price ?? null
+        const pB = prices.find(p => p.store === storeB)?.price ?? null
+        if (pA != null && pB != null) {
+          return pA <= pB
+            ? { item, store: storeA, price: pA }
+            : { item, store: storeB, price: pB }
+        }
+        return pA != null
+          ? { item, store: storeA, price: pA }
+          : { item, store: storeB, price: pB ?? null }
+      })
+      const total = parseFloat(stops.reduce((s, x) => s + (x.price ?? 0), 0).toFixed(2))
+      if (!bestPair || total < bestPair.total) {
+        bestPair = { storeA, storeB, total, stops }
+      }
+    }
+  }
+
+  const pairSavings = bestPair ? parseFloat((cheapestSingle - bestPair.total).toFixed(2)) : 0
 
   const options = [
     {
       id: `single-${singleStore[0].store}`,
-      title: `Shop at ${singleStore[0].store}`,
-      subtitle: 'One stop · lowest single-store total',
-      recommended: savings < 2,
+      title: singleStore[0].store,
+      subtitle: '1 stop · lowest single-store total',
+      stopCount: 1,
+      recommended: pairSavings < 2,
       total: singleStore[0].total,
       savings: 0,
       stops: singleStore[0].stops,
     },
   ]
 
-  if (savings >= 1) {
+  if (bestPair && pairSavings >= 1) {
+    // Work out per-store subtotals for the subtitle
+    const byStore = {}
+    bestPair.stops.forEach(s => {
+      if (!byStore[s.store]) byStore[s.store] = 0
+      byStore[s.store] += s.price ?? 0
+    })
+    const storeSummary = Object.entries(byStore)
+      .map(([s, t]) => `${s} $${t.toFixed(2)}`)
+      .join(' · ')
+
     options.push({
-      id: 'optimized',
-      title: 'Best price each item',
-      subtitle: `Split across ${new Set(optimizedStops.map(s => s.store)).size} stores`,
-      recommended: savings >= 2,
-      total: optimizedTotal,
-      savings,
-      stops: optimizedStops,
+      id: 'split-2',
+      title: `${bestPair.storeA} + ${bestPair.storeB}`,
+      subtitle: `2 stops · ${storeSummary}`,
+      stopCount: 2,
+      recommended: pairSavings >= 2,
+      total: bestPair.total,
+      savings: pairSavings,
+      stops: bestPair.stops,
     })
   }
 
   if (singleStore[1]) {
     options.push({
       id: `single-${singleStore[1].store}`,
-      title: `Shop at ${singleStore[1].store}`,
-      subtitle: 'One stop',
+      title: singleStore[1].store,
+      subtitle: '1 stop',
+      stopCount: 1,
       recommended: false,
       total: singleStore[1].total,
       savings: 0,
@@ -98,5 +130,6 @@ export function calculateTripOptions(priceResults) {
     })
   }
 
-  return options
+  // Recommended option first
+  return options.sort((a, b) => (b.recommended ? 1 : 0) - (a.recommended ? 1 : 0))
 }

@@ -2,25 +2,51 @@ export default function FrogLogo({ size = 40, className = '' }) {
   return (
     <svg
       width={size}
-      height={size}
-      viewBox="0 0 100 100"
-      fill="currentColor"
+      height={size * 0.82}
+      viewBox="0 0 100 82"
+      fill="none"
       className={className}
       aria-hidden="true"
     >
-      {/* Eye bumps */}
-      <circle cx="33" cy="27" r="11" />
-      <circle cx="67" cy="27" r="11" />
-      {/* Head */}
-      <circle cx="50" cy="41" r="19" />
-      {/* Body — small and round */}
-      <ellipse cx="50" cy="66" rx="16" ry="14" />
-      {/* Slender front arms */}
-      <ellipse cx="25" cy="60" rx="10" ry="4" transform="rotate(-20 25 60)" />
-      <ellipse cx="75" cy="60" rx="10" ry="4" transform="rotate(20 75 60)" />
-      {/* Slim back feet splayed out */}
-      <ellipse cx="31" cy="82" rx="14" ry="5" transform="rotate(-25 31 82)" />
-      <ellipse cx="69" cy="82" rx="14" ry="5" transform="rotate(25 69 82)" />
+      {/* Dark outline — wide flat face */}
+      <ellipse cx="50" cy="50" rx="48" ry="36" fill="#1a1a1a" />
+
+      {/* Eye bump outlines */}
+      <circle cx="27" cy="22" r="16" fill="#1a1a1a" />
+      <circle cx="73" cy="22" r="16" fill="#1a1a1a" />
+
+      {/* Main face green */}
+      <ellipse cx="50" cy="50" rx="44" ry="32" fill="#2ebd52" />
+
+      {/* Eye bumps green */}
+      <circle cx="27" cy="22" r="13" fill="#2ebd52" />
+      <circle cx="73" cy="22" r="13" fill="#2ebd52" />
+
+      {/* Chin / belly — light yellow-green */}
+      <ellipse cx="50" cy="62" rx="36" ry="20" fill="#aadf3a" />
+
+      {/* Eye yellow rings */}
+      <circle cx="27" cy="22" r="10" fill="#aadf3a" />
+      <circle cx="73" cy="22" r="10" fill="#aadf3a" />
+
+      {/* Pupils */}
+      <circle cx="27" cy="22" r="5.5" fill="#1a1a1a" />
+      <circle cx="73" cy="22" r="5.5" fill="#1a1a1a" />
+
+      {/* Eye shine */}
+      <circle cx="29.5" cy="19.5" r="1.8" fill="#fff" />
+      <circle cx="75.5" cy="19.5" r="1.8" fill="#fff" />
+
+      {/* Nostrils */}
+      <rect x="43" y="44" width="4" height="2.5" rx="1.2" fill="#1a1a1a" transform="rotate(-8 45 45)" />
+      <rect x="53" y="44" width="4" height="2.5" rx="1.2" fill="#1a1a1a" transform="rotate(8 55 45)" />
+
+      {/* Smile */}
+      <path d="M 18 58 Q 50 72 82 58" stroke="#1a1a1a" strokeWidth="2.2" fill="none" strokeLinecap="round" />
+
+      {/* Dimples */}
+      <path d="M 14 54 Q 12 58 16 61" stroke="#1a1a1a" strokeWidth="1.8" fill="none" strokeLinecap="round" />
+      <path d="M 86 54 Q 88 58 84 61" stroke="#1a1a1a" strokeWidth="1.8" fill="none" strokeLinecap="round" />
     </svg>
   )
 }

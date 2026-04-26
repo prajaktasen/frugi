@@ -1,10 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@400;500;600&display=swap');
 
 :root {
-  --green: #1D9E75;
-  --green-dark: #085041;
-  --green-light: #E1F5EE;
-  --green-mid: #9FE1CB;
+  --green: #0f7f5c;
+  --green-dark: #064d37;
+  --green-light: #d4ece2;
+  --green-mid: #6ec9a8;
   --amber: #BA7517;
   --amber-light: #FAEEDA;
   --red: #A32D2D;
