@@ -2,10 +2,134 @@ import { useState, useEffect } from 'react'
 import { useApp } from '../AppContext'
 import { calculateTripOptions } from '../api/prices'
 
+const FAKE_CONTACTS = [
+  { name: 'Emma K.',   initials: 'EK', color: '#7C5CBF' },
+  { name: 'Jake M.',   initials: 'JM', color: '#D4602A' },
+  { name: 'Sofia R.',  initials: 'SR', color: '#2A7FBF' },
+  { name: 'Alex T.',   initials: 'AT', color: '#2A9E6E' },
+  { name: 'Maya P.',   initials: 'MP', color: '#BF2A6B' },
+  { name: 'Chris L.',  initials: 'CL', color: '#8A7A2A' },
+]
+
+function ShareSheet({ cart, cartTotal, onClose }) {
+  const [sent, setSent] = useState(null)
+
+  const cartSummary = cart.map(i => `• ${i.name}${i.price ? ` ($${i.price.toFixed(2)})` : ''}`).join('\n')
+  const message = `Hey! Here's my grocery cart from frugi — total ~$${cartTotal.toFixed(2)}:\n\n${cartSummary}`
+
+  return (
+    <>
+      {/* Backdrop */}
+      <div
+        onClick={onClose}
+        style={{
+          position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.4)',
+          zIndex: 300, animation: 'tabFadeIn 0.15s ease',
+        }}
+      />
+
+      {/* Sheet */}
+      <div style={{
+        position: 'fixed', bottom: 0, left: '50%', transform: 'translateX(-50%)',
+        width: '100%', maxWidth: 430,
+        background: 'var(--surface)', borderRadius: '20px 20px 0 0',
+        zIndex: 301, padding: '0 0 40px',
+        animation: 'sheetUp 0.25s cubic-bezier(.34,1.2,.64,1)',
+      }}>
+        {/* Handle */}
+        <div style={{ display: 'flex', justifyContent: 'center', padding: '10px 0 4px' }}>
+          <div style={{ width: 36, height: 4, borderRadius: 2, background: 'var(--border)' }} />
+        </div>
+
+        <div style={{ padding: '8px 20px 16px', borderBottom: '1px solid var(--border)' }}>
+          <div style={{ fontSize: 16, fontWeight: 700, fontFamily: 'Fraunces, serif', color: 'var(--text)' }}>
+            Share cart
+          </div>
+          <div style={{ fontSize: 12, color: 'var(--text-3)', marginTop: 2 }}>
+            {cart.length} items · ~${cartTotal.toFixed(2)} total
+          </div>
+        </div>
+
+        {/* Contacts row */}
+        <div style={{ padding: '16px 20px', borderBottom: '1px solid var(--border)' }}>
+          <div style={{ fontSize: 11, fontWeight: 600, color: 'var(--text-3)', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: 14 }}>
+            Recents
+          </div>
+          <div style={{ display: 'flex', gap: 18, overflowX: 'auto', paddingBottom: 4 }}>
+            {FAKE_CONTACTS.map(c => (
+              <button
+                key={c.name}
+                onClick={() => setSent(c.name)}
+                style={{
+                  display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6,
+                  background: 'none', border: 'none', cursor: 'pointer', flexShrink: 0,
+                  opacity: sent && sent !== c.name ? 0.4 : 1,
+                  transition: 'opacity 0.2s',
+                }}
+              >
+                <div style={{
+                  width: 52, height: 52, borderRadius: '50%',
+                  background: sent === c.name ? 'var(--green)' : c.color,
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  fontSize: 16, fontWeight: 700, color: '#fff',
+                  boxShadow: sent === c.name ? `0 0 0 3px var(--green-light)` : 'none',
+                  transition: 'all 0.2s',
+                  position: 'relative',
+                }}>
+                  {sent === c.name
+                    ? <span style={{ fontSize: 20 }}>✓</span>
+                    : c.initials}
+                </div>
+                <span style={{ fontSize: 11, color: sent === c.name ? 'var(--green-dark)' : 'var(--text-2)', fontWeight: sent === c.name ? 600 : 400 }}>
+                  {sent === c.name ? 'Sent!' : c.name}
+                </span>
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* Message preview */}
+        <div style={{ padding: '14px 20px', borderBottom: '1px solid var(--border)' }}>
+          <div style={{ fontSize: 11, fontWeight: 600, color: 'var(--text-3)', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: 8 }}>
+            Message preview
+          </div>
+          <div style={{
+            background: 'var(--bg)', borderRadius: 12, padding: '10px 12px',
+            fontSize: 12, color: 'var(--text-2)', lineHeight: 1.7,
+            whiteSpace: 'pre-line', maxHeight: 110, overflowY: 'auto',
+          }}>
+            {message}
+          </div>
+        </div>
+
+        {/* Copy link */}
+        <div style={{ padding: '14px 20px 0' }}>
+          <button
+            onClick={() => setSent('link')}
+            style={{
+              width: '100%', padding: '11px', borderRadius: 10,
+              border: '1.5px solid var(--border)', background: sent === 'link' ? 'var(--green-light)' : 'var(--bg)',
+              color: sent === 'link' ? 'var(--green-dark)' : 'var(--text)',
+              fontSize: 13, fontWeight: 600, fontFamily: "'DM Sans', sans-serif",
+              cursor: 'pointer', transition: 'all 0.2s',
+              display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
+            }}
+          >
+            {sent === 'link' ? '✓ Link copied!' : '🔗 Copy link'}
+          </button>
+        </div>
+      </div>
+
+      <style>{`@keyframes sheetUp { from { transform: translateX(-50%) translateY(100%); } to { transform: translateX(-50%) translateY(0); } }`}</style>
+    </>
+  )
+}
+
 export default function CartScreen() {
   const { cart, addToCart, removeFromCart, clearCart, priceResults, setActiveTab } = useApp()
   const [view, setView] = useState('cart')
   const [tripOptions, setTripOptions] = useState([])
+  const [showShare, setShowShare] = useState(false)
 
   useEffect(() => {
     if (priceResults) setTripOptions(calculateTripOptions(priceResults))
@@ -45,10 +169,27 @@ export default function CartScreen() {
           <div className="screen-title">My cart</div>
           <div className="screen-sub">{cart.length} item{cart.length !== 1 ? 's' : ''}</div>
         </div>
-        <button onClick={clearCart} style={{ background: 'none', border: 'none', fontSize: 12, color: 'var(--text-3)', cursor: 'pointer' }}>
-          Clear all
-        </button>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+          <button
+            onClick={() => setShowShare(true)}
+            style={{
+              background: 'var(--green-light)', border: '1px solid var(--green-mid)',
+              borderRadius: 20, padding: '5px 12px', fontSize: 12, fontWeight: 600,
+              color: 'var(--green-dark)', cursor: 'pointer', fontFamily: "'DM Sans', sans-serif",
+              display: 'flex', alignItems: 'center', gap: 5,
+            }}
+          >
+            <span style={{ fontSize: 13 }}>↗</span> Share
+          </button>
+          <button onClick={clearCart} style={{ background: 'none', border: 'none', fontSize: 12, color: 'var(--text-3)', cursor: 'pointer' }}>
+            Clear all
+          </button>
+        </div>
       </div>
+
+      {showShare && (
+        <ShareSheet cart={cart} cartTotal={cartTotal} onClose={() => setShowShare(false)} />
+      )}
 
       <div style={{ display: 'flex', padding: '8px 18px', gap: 8, borderBottom: '1px solid var(--border)' }}>
         {['cart', 'optimize'].map(v => (

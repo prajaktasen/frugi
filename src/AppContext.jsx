@@ -6,7 +6,7 @@ export function AppProvider({ children }) {
   const [list, setList] = useState([]) // user's grocery list items
   const [priceResults, setPriceResults] = useState(null) // { items: [], stores: [] }
   const [cart, setCart] = useState([]) // { name, price, store, amount }
-  const [zipcode, setZipcode] = useState('98052')
+  const [zipcode, setZipcode] = useState('98011')
   const [activeTab, setActiveTab] = useState('list')
 
   const addToList = (item) => {

@@ -1,0 +1,167 @@
+[
+  {
+    "id": 1001,
+    "title": "Garlic Butter Pasta",
+    "image": null,
+    "readyInMinutes": 20,
+    "servings": 4,
+    "extendedIngredients": [
+      { "id": 11, "name": "spaghetti", "nameClean": "spaghetti", "original": "12 oz spaghetti" },
+      { "id": 12, "name": "butter", "nameClean": "butter", "original": "4 tbsp butter" },
+      { "id": 13, "name": "garlic", "nameClean": "garlic", "original": "5 cloves garlic, minced" },
+      { "id": 14, "name": "parmesan", "nameClean": "parmesan cheese", "original": "½ cup grated parmesan" },
+      { "id": 15, "name": "parsley", "nameClean": "fresh parsley", "original": "¼ cup fresh parsley, chopped" },
+      { "id": 16, "name": "salt", "nameClean": "salt", "original": "salt and pepper to taste" }
+    ],
+    "analyzedInstructions": [{ "steps": [
+      { "number": 1, "step": "Cook spaghetti in salted boiling water until al dente. Reserve ½ cup pasta water before draining." },
+      { "number": 2, "step": "Melt butter in a large skillet over medium heat. Add garlic and cook 1–2 minutes until fragrant." },
+      { "number": 3, "step": "Add drained pasta to the skillet and toss to coat. Add a splash of pasta water to loosen the sauce." },
+      { "number": 4, "step": "Remove from heat. Stir in parmesan and parsley. Season with salt and pepper. Serve immediately." }
+    ]}]
+  },
+  {
+    "id": 1002,
+    "title": "Sheet Pan Lemon Chicken & Veggies",
+    "image": null,
+    "readyInMinutes": 40,
+    "servings": 4,
+    "extendedIngredients": [
+      { "id": 21, "name": "chicken thighs", "nameClean": "chicken thighs", "original": "4 bone-in chicken thighs" },
+      { "id": 22, "name": "broccoli", "nameClean": "broccoli", "original": "2 cups broccoli florets" },
+      { "id": 23, "name": "bell pepper", "nameClean": "bell pepper", "original": "1 red bell pepper, sliced" },
+      { "id": 24, "name": "lemon", "nameClean": "lemon", "original": "1 lemon, sliced" },
+      { "id": 25, "name": "olive oil", "nameClean": "olive oil", "original": "3 tbsp olive oil" },
+      { "id": 26, "name": "garlic powder", "nameClean": "garlic powder", "original": "1 tsp garlic powder" }
+    ],
+    "analyzedInstructions": [{ "steps": [
+      { "number": 1, "step": "Preheat oven to 425°F. Line a large baking sheet with foil." },
+      { "number": 2, "step": "Toss chicken and vegetables with olive oil, garlic powder, salt, and pepper. Spread on the baking sheet." },
+      { "number": 3, "step": "Lay lemon slices over the chicken. Roast for 30–35 minutes until chicken is cooked through and skin is crispy." }
+    ]}]
+  },
+  {
+    "id": 1003,
+    "title": "Black Bean Tacos",
+    "image": null,
+    "readyInMinutes": 15,
+    "servings": 2,
+    "extendedIngredients": [
+      { "id": 31, "name": "black beans", "nameClean": "black beans", "original": "1 can (15 oz) black beans, drained" },
+      { "id": 32, "name": "corn tortillas", "nameClean": "corn tortillas", "original": "6 small corn tortillas" },
+      { "id": 33, "name": "avocado", "nameClean": "avocado", "original": "1 avocado, sliced" },
+      { "id": 34, "name": "salsa", "nameClean": "salsa", "original": "½ cup salsa" },
+      { "id": 35, "name": "lime", "nameClean": "lime", "original": "1 lime, juiced" },
+      { "id": 36, "name": "cumin", "nameClean": "cumin", "original": "1 tsp cumin" }
+    ],
+    "analyzedInstructions": [{ "steps": [
+      { "number": 1, "step": "Warm beans in a small saucepan with cumin and a pinch of salt. Cook 3–4 minutes until heated through." },
+      { "number": 2, "step": "Warm tortillas directly over a gas flame or in a dry skillet for 30 seconds per side." },
+      { "number": 3, "step": "Fill tortillas with beans, avocado, and salsa. Squeeze lime juice over the top and serve." }
+    ]}]
+  },
+  {
+    "id": 1004,
+    "title": "Tomato Basil Soup",
+    "image": null,
+    "readyInMinutes": 30,
+    "servings": 4,
+    "extendedIngredients": [
+      { "id": 41, "name": "canned tomatoes", "nameClean": "canned tomatoes", "original": "2 cans (28 oz) crushed tomatoes" },
+      { "id": 42, "name": "onion", "nameClean": "onion", "original": "1 medium onion, diced" },
+      { "id": 43, "name": "garlic", "nameClean": "garlic", "original": "3 cloves garlic" },
+      { "id": 44, "name": "heavy cream", "nameClean": "heavy cream", "original": "½ cup heavy cream" },
+      { "id": 45, "name": "basil", "nameClean": "fresh basil", "original": "¼ cup fresh basil leaves" },
+      { "id": 46, "name": "olive oil", "nameClean": "olive oil", "original": "2 tbsp olive oil" }
+    ],
+    "analyzedInstructions": [{ "steps": [
+      { "number": 1, "step": "Heat olive oil in a large pot. Sauté onion until soft, about 5 minutes. Add garlic and cook 1 minute more." },
+      { "number": 2, "step": "Pour in crushed tomatoes. Simmer uncovered for 15 minutes." },
+      { "number": 3, "step": "Use an immersion blender to blend until smooth. Stir in cream and basil. Season to taste and serve." }
+    ]}]
+  },
+  {
+    "id": 1005,
+    "title": "Overnight Oats",
+    "image": null,
+    "readyInMinutes": 5,
+    "servings": 1,
+    "extendedIngredients": [
+      { "id": 51, "name": "rolled oats", "nameClean": "rolled oats", "original": "½ cup rolled oats" },
+      { "id": 52, "name": "milk", "nameClean": "milk", "original": "½ cup milk" },
+      { "id": 53, "name": "Greek yogurt", "nameClean": "Greek yogurt", "original": "¼ cup Greek yogurt" },
+      { "id": 54, "name": "honey", "nameClean": "honey", "original": "1 tbsp honey" },
+      { "id": 55, "name": "banana", "nameClean": "banana", "original": "½ banana, sliced" },
+      { "id": 56, "name": "chia seeds", "nameClean": "chia seeds", "original": "1 tsp chia seeds" }
+    ],
+    "analyzedInstructions": [{ "steps": [
+      { "number": 1, "step": "Combine oats, milk, yogurt, honey, and chia seeds in a jar or container. Stir well." },
+      { "number": 2, "step": "Cover and refrigerate overnight (at least 6 hours)." },
+      { "number": 3, "step": "In the morning, top with banana slices and any other toppings you like. Eat cold or microwave 1 minute." }
+    ]}]
+  },
+  {
+    "id": 1006,
+    "title": "Stir-Fried Rice & Eggs",
+    "image": null,
+    "readyInMinutes": 15,
+    "servings": 2,
+    "extendedIngredients": [
+      { "id": 61, "name": "rice", "nameClean": "cooked rice", "original": "2 cups cooked white rice (day-old works best)" },
+      { "id": 62, "name": "eggs", "nameClean": "eggs", "original": "3 large eggs" },
+      { "id": 63, "name": "soy sauce", "nameClean": "soy sauce", "original": "2 tbsp soy sauce" },
+      { "id": 64, "name": "sesame oil", "nameClean": "sesame oil", "original": "1 tsp sesame oil" },
+      { "id": 65, "name": "green onion", "nameClean": "green onion", "original": "2 green onions, sliced" },
+      { "id": 66, "name": "vegetable oil", "nameClean": "vegetable oil", "original": "2 tbsp vegetable oil" }
+    ],
+    "analyzedInstructions": [{ "steps": [
+      { "number": 1, "step": "Heat vegetable oil in a wok or large skillet over high heat until shimmering." },
+      { "number": 2, "step": "Add rice and press into the pan. Let it sit untouched for 1–2 minutes to crisp up, then stir." },
+      { "number": 3, "step": "Push rice to one side. Crack eggs into the empty space and scramble until just set, then mix into rice." },
+      { "number": 4, "step": "Add soy sauce and sesame oil. Toss everything together. Top with green onions and serve." }
+    ]}]
+  },
+  {
+    "id": 1007,
+    "title": "Creamy Mushroom Risotto",
+    "image": null,
+    "readyInMinutes": 35,
+    "servings": 3,
+    "extendedIngredients": [
+      { "id": 71, "name": "arborio rice", "nameClean": "arborio rice", "original": "1 cup arborio rice" },
+      { "id": 72, "name": "mushrooms", "nameClean": "mushrooms", "original": "2 cups sliced cremini mushrooms" },
+      { "id": 73, "name": "chicken broth", "nameClean": "chicken broth", "original": "4 cups warm chicken broth" },
+      { "id": 74, "name": "white wine", "nameClean": "white wine", "original": "½ cup dry white wine" },
+      { "id": 75, "name": "parmesan", "nameClean": "parmesan cheese", "original": "½ cup grated parmesan" },
+      { "id": 76, "name": "butter", "nameClean": "butter", "original": "2 tbsp butter" },
+      { "id": 77, "name": "onion", "nameClean": "onion", "original": "1 small onion, finely diced" }
+    ],
+    "analyzedInstructions": [{ "steps": [
+      { "number": 1, "step": "Sauté onion in butter until translucent. Add mushrooms and cook until golden." },
+      { "number": 2, "step": "Add rice and toast for 1 minute. Pour in wine and stir until absorbed." },
+      { "number": 3, "step": "Add warm broth one ladle at a time, stirring constantly and waiting for each addition to absorb before adding the next. This takes about 20 minutes." },
+      { "number": 4, "step": "Remove from heat. Stir in parmesan. Season with salt and pepper. Serve immediately." }
+    ]}]
+  },
+  {
+    "id": 1008,
+    "title": "Greek Salad with Chickpeas",
+    "image": null,
+    "readyInMinutes": 10,
+    "servings": 2,
+    "extendedIngredients": [
+      { "id": 81, "name": "chickpeas", "nameClean": "chickpeas", "original": "1 can (15 oz) chickpeas, drained" },
+      { "id": 82, "name": "cucumber", "nameClean": "cucumber", "original": "1 cucumber, diced" },
+      { "id": 83, "name": "cherry tomatoes", "nameClean": "cherry tomatoes", "original": "1 cup cherry tomatoes, halved" },
+      { "id": 84, "name": "feta cheese", "nameClean": "feta cheese", "original": "½ cup crumbled feta" },
+      { "id": 85, "name": "kalamata olives", "nameClean": "kalamata olives", "original": "¼ cup kalamata olives" },
+      { "id": 86, "name": "olive oil", "nameClean": "olive oil", "original": "3 tbsp olive oil" },
+      { "id": 87, "name": "lemon", "nameClean": "lemon", "original": "juice of 1 lemon" }
+    ],
+    "analyzedInstructions": [{ "steps": [
+      { "number": 1, "step": "Combine chickpeas, cucumber, tomatoes, and olives in a large bowl." },
+      { "number": 2, "step": "Whisk together olive oil, lemon juice, salt, and pepper. Pour over salad and toss." },
+      { "number": 3, "step": "Top with crumbled feta. Serve immediately or refrigerate up to 2 days." }
+    ]}]
+  }
+]

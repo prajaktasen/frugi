@@ -10,7 +10,8 @@
       "Read(//Library/**)",
       "Bash(python3 -m git_filter_repo --path .env --invert-paths --force)",
       "Bash(git remote *)",
-      "Bash(git push *)"
+      "Bash(git push *)",
+      "Bash(python3 -c ' *)"
     ]
   }
 }

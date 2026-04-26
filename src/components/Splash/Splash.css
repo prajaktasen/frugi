@@ -1,7 +1,7 @@
 .splash {
-  position: fixed;
+  position: absolute;
   inset: 0;
-  background: #16a34a;
+  background: var(--green);
   display: flex;
   align-items: center;
   justify-content: center;

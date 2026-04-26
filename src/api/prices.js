@@ -84,8 +84,8 @@ export function calculateTripOptions(priceResults) {
   const options = [
     {
       id: `single-${singleStore[0].store}`,
-      title: singleStore[0].store,
-      subtitle: '1 stop · lowest single-store total',
+      title: `1 stop: ${singleStore[0].store}`,
+      subtitle: 'Lowest single-store total',
       stopCount: 1,
       recommended: pairSavings < 2,
       total: singleStore[0].total,
@@ -94,39 +94,16 @@ export function calculateTripOptions(priceResults) {
     },
   ]
 
-  if (bestPair && pairSavings >= 1) {
-    // Work out per-store subtotals for the subtitle
-    const byStore = {}
-    bestPair.stops.forEach(s => {
-      if (!byStore[s.store]) byStore[s.store] = 0
-      byStore[s.store] += s.price ?? 0
-    })
-    const storeSummary = Object.entries(byStore)
-      .map(([s, t]) => `${s} $${t.toFixed(2)}`)
-      .join(' · ')
-
+  if (bestPair) {
     options.push({
       id: 'split-2',
-      title: `${bestPair.storeA} + ${bestPair.storeB}`,
-      subtitle: `2 stops · ${storeSummary}`,
+      title: `2 stops: ${bestPair.storeA} + ${bestPair.storeB}`,
+      subtitle: pairSavings > 0 ? `Best price per item across 2 stores` : 'Best price per item across 2 stores',
       stopCount: 2,
       recommended: pairSavings >= 2,
       total: bestPair.total,
-      savings: pairSavings,
+      savings: pairSavings > 0 ? pairSavings : 0,
       stops: bestPair.stops,
-    })
-  }
-
-  if (singleStore[1]) {
-    options.push({
-      id: `single-${singleStore[1].store}`,
-      title: singleStore[1].store,
-      subtitle: '1 stop',
-      stopCount: 1,
-      recommended: false,
-      total: singleStore[1].total,
-      savings: 0,
-      stops: singleStore[1].stops,
     })
   }
 
