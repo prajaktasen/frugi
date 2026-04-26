@@ -1,6 +1,8 @@
 const CLIENT_ID = import.meta.env.VITE_KROGER_CLIENT_ID
 const CLIENT_SECRET = import.meta.env.VITE_KROGER_CLIENT_SECRET
-const BASE = 'https://api.kroger.com/v1'
+// All Kroger requests go through the Vite proxy (/kroger-api → https://api.kroger.com/v1)
+// so the browser never hits kroger.com directly, bypassing their CORS restriction.
+const BASE = '/kroger-api'
 
 let cachedToken = null
 let tokenExpiry = 0
