@@ -5,7 +5,7 @@ import { calculateTripOptions } from '../api/prices'
 const FAKE_CONTACTS = [
   { name: 'Emma K.',   initials: 'EK', color: '#7C5CBF' },
   { name: 'Jake M.',   initials: 'JM', color: '#D4602A' },
-  { name: 'Sofia R.',  initials: 'SR', color: '#2A7FBF' },
+  { name: 'Sofia R.',  initials: 'SR', color: 'rgb(20, 147, 48)' },
   { name: 'Alex T.',   initials: 'AT', color: '#2A9E6E' },
   { name: 'Maya P.',   initials: 'MP', color: '#BF2A6B' },
   { name: 'Chris L.',  initials: 'CL', color: '#8A7A2A' },
